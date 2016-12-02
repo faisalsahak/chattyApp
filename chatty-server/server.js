@@ -35,7 +35,7 @@ wss.broadcast = function broadcast(data) {
  let usersOnline = 0;
 wss.on('connection', (ws) => {
 console.log("Client Conntected")
-  usersOnline = wss.clients.length;
+usersOnline = wss.clients.length;
 console.log("client color", ws.clients)
   // Call broadcast with usercount object
   wss.broadcast({
