@@ -16,27 +16,27 @@ const server = express()
 // Create the WebSockets server
 const wss = new SocketServer({ server });
 
-function getRandomColor(){
-  let colors = ['#f44242', '#f4e542', '#4e42f4', '#42f4c5'];
-  return colors[(Math.floor(Math.random()* colors.length))];
-}
+// function getRandomColor(){
+//   let colors = ['#f44242', '#f4e542', '#4e42f4', '#42f4c5'];
+//   return colors[(Math.floor(Math.random()* colors.length))];
+// }
 
 // Send data object to each connected client
 wss.broadcast = function broadcast(data) {
   wss.clients.forEach(function each(client) {
     client.send(JSON.stringify(data));
-    console.log('Client color: ', client.color);
+    //console.log('Client color: ', client.color);
     // client.color = getRandomColor();
   });
 };
 
 
 
- let usersOnline = 0;
+let usersOnline = 0;
 wss.on('connection', (ws) => {
 console.log("Client Conntected")
 usersOnline = wss.clients.length;
-console.log("client color", ws.clients)
+//console.log("client color", ws.clients)
   // Call broadcast with usercount object
   wss.broadcast({
     type: 'userCount',

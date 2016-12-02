@@ -11,7 +11,7 @@ class App extends Component {
     this.sendChatFields = this.sendChatFields.bind(this);
     this.state = {
       //
-      currentUser: {name: "Bob", color: "blue"},
+      currentUser: {name: "Bob"},
       messages: [], // store messages coming from the server
       usersOnline: 0,
     };
@@ -47,9 +47,9 @@ class App extends Component {
     }
   }
 
-// send newCF object to the server when function invoked from ChatBar
-  sendChatFields(newCF) {
-    this.socket.send(JSON.stringify(newCF));
+// send postingNewMessage object to the server when function invoked from ChatBar
+  sendChatFields(postingNewMessage) {
+    this.socket.send(JSON.stringify(postingNewMessage));
   }
 
   render() {

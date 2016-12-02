@@ -46,20 +46,20 @@ class ChatBar extends Component {
   }
 
   newMessage() {
-   let newCF = {
+   let postingNewMessage = {
       type: 'postMessage',
       info: {
         username: this.state.username,
         content: this.state.content
       }
     }
-    this.props.sendChatFields(newCF);
+    this.props.sendChatFields(postingNewMessage);
   }
 
   newNotification() {
     if (this.state.username !== this.props.currentUser.name) {
       let notification = this.props.currentUser.name+ ' changed their name to ' + this.state.username;
-      let newCF = {
+      let postingNewMessage = {
         type: 'postNotification',
         info: {
           itemChanged: 'name',
@@ -67,7 +67,7 @@ class ChatBar extends Component {
           notification: notification
         }
       }
-      this.props.sendChatFields(newCF)
+      this.props.sendChatFields(postingNewMessage)
       // console.log(notification.prevUsername, ' changed their ', notification.item, ' to ', notification.newUsername,'!')
     }
   }
@@ -100,9 +100,3 @@ class ChatBar extends Component {
 
 }
 export default ChatBar;
-
-
-
-
-
-
